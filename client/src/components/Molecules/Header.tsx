@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { P } from '../Atoms/text/P';
 import { Input } from '../Atoms/Input';
 import { Link } from 'react-router-dom';
+import {useDispatch,useState} from '../../store/searchStore/hooks'
 
 const StyledHeader = styled.header`
   grid-area: header;
@@ -11,7 +12,6 @@ const StyledHeader = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  height: 45px;
 `;
 
 const StyledLink = styled(Link)`
@@ -19,12 +19,10 @@ const StyledLink = styled(Link)`
   color: ${props => props.theme.colors.text.primary};
 `;
 
-interface Props {
-  onSearchChange: (value: string) => void;
-  searchValue: string;
-}
+export const Header: FC = () => {
+  const dispatch = useDispatch();
+  const state = useState();
 
-export const Header: FC<Props> = ({ searchValue, onSearchChange }) => {
   return (
     <StyledHeader>
       <StyledLink to="/">
@@ -34,8 +32,8 @@ export const Header: FC<Props> = ({ searchValue, onSearchChange }) => {
       </StyledLink>
       <Input
         placeholder="Search"
-        value={searchValue}
-        onChange={e => onSearchChange(e.target.value)}
+        value={state}
+        onChange={e => dispatch({type: 'Search/Update', payload: e.target.value})}
       />
     </StyledHeader>
   );

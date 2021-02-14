@@ -10,8 +10,9 @@ import { ProductsStoreProvider } from './store/productsStore/provider';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { NotFound } from './pages/NotFound';
+import { SearchStoreProvider } from './store/searchStore/provider';
 
-const storeProviders = [ProductsStoreProvider];
+const storeProviders = [ProductsStoreProvider, SearchStoreProvider];
 
 export const App: FC = () => {
   return (

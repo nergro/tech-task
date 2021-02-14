@@ -9,12 +9,23 @@ declare module '@emotion/react' {
       header: {
         background: string;
       };
+      sidebar: {
+        background: string;
+        link: string;
+        linkActive: string;
+      };
       article: {
         border: string;
       };
       button: {
         background: string;
         text: string;
+      };
+      input: {
+        border: string;
+        background: string;
+        text: string;
+        borderFocus: string;
       };
     };
   }

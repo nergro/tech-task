@@ -2,10 +2,11 @@ import React, { FC } from 'react';
 import styled from '@emotion/styled';
 import { ChildCategory } from '../../types/category';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const Aside = styled.aside`
   grid-area: sidebar;
-  background-color: lavender;
+  background-color: ${props => props.theme.colors.sidebar.background};
   padding: 10px;
 `;
 
@@ -20,11 +21,23 @@ const ListItem = styled.li`
   padding: 8px 0;
 `;
 
+type LinkProps = {
+  active: boolean;
+};
+
+const StyledLink = styled(Link)<LinkProps>`
+  text-decoration: none;
+  color: ${props => props.theme.colors.sidebar[props.active ? 'linkActive' : 'link']};
+  transition: all 0.3s ease;
+`;
+
 interface Props {
   categories?: ChildCategory[];
 }
 
-export const SideMenu: FC<Props> = ({ categories }) => {
+export const Sidebar: FC<Props> = ({ categories }) => {
+  const { pathname } = useLocation();
+  
   return (
     <Aside>
       <h3>Kategorien</h3>
@@ -32,7 +45,9 @@ export const SideMenu: FC<Props> = ({ categories }) => {
         <List>
           {categories.map(({ name, urlPath }) => (
             <ListItem key={name}>
-              <Link to={`/${urlPath}`}>{name}</Link>
+              <StyledLink to={`/${urlPath}`} active={pathname.includes(urlPath)}>
+                {name}
+              </StyledLink>
             </ListItem>
           ))}
         </List>
