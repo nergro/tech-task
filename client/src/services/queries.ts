@@ -1,7 +1,6 @@
-import { ApolloError, gql, useQuery } from '@apollo/client';
-import { Category } from '../types/category';
+import { gql } from '@apollo/client';
 
-const GET_PRODUCTS = gql`
+export const GET_PRODUCTS = gql`
   query getProducts {
     categories(ids: "156126", locale: de_DE) {
       name
@@ -28,9 +27,3 @@ const GET_PRODUCTS = gql`
     }
   }
 `;
-
-export const useGetProducts = (): Category[] | 'loading' | ApolloError => {
-  const { data, loading, error } = useQuery(GET_PRODUCTS);
-
-  return loading ? 'loading' : error || data;
-};

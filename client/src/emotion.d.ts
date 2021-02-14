@@ -6,6 +6,16 @@ declare module '@emotion/react' {
       text: {
         primary: string;
       };
+      header: {
+        background: string;
+      };
+      article: {
+        border: string;
+      };
+      button: {
+        background: string;
+        text: string;
+      };
     };
   }
 }
