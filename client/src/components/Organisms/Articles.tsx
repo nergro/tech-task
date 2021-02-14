@@ -16,8 +16,8 @@ interface Props {
 export const Articles: FC<Props> = ({ articles }) => {
   return (
     <Container>
-      {articles.map(x => (
-        <Article key={x.name} article={x} />
+      {articles.map((x, i) => (
+        <Article key={x.name + i} article={x} />
       ))}
     </Container>
   );

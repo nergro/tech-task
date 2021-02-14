@@ -19,7 +19,12 @@ const StyledLink = styled(Link)`
   color: ${props => props.theme.colors.text.primary};
 `;
 
-export const Header: FC = () => {
+interface Props {
+  onSearchChange: (value: string) => void;
+  searchValue: string;
+}
+
+export const Header: FC<Props> = ({ searchValue, onSearchChange }) => {
   return (
     <StyledHeader>
       <StyledLink to="/">
@@ -27,7 +32,11 @@ export const Header: FC = () => {
           home24
         </P>
       </StyledLink>
-      <Input placeholder="Search" />
+      <Input
+        placeholder="Search"
+        value={searchValue}
+        onChange={e => onSearchChange(e.target.value)}
+      />
     </StyledHeader>
   );
 };
