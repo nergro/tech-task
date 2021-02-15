@@ -22,7 +22,7 @@ export const Home: FC = () => {
   if (isError(productsData) || productsData?.length === 0 || !productsData) {
     return (
       <PageLayout>
-        <H1>Sorry! Something went wrong...</H1>
+        <H1>Es tut uns leid! Etwas ist schief gelaufen...</H1>
       </PageLayout>
     );
   }

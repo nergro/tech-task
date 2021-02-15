@@ -3,22 +3,21 @@ import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
 
 const scalingSquaresAnimation = keyframes`
- 50% {
+      50% {
         transform: rotate(90deg);
       }
-
       100% {
         transform: rotate(180deg);
       }
 `;
 
 const Container = styled.div`
-position: absolute;
-margin-left: auto;
-margin-right: auto;
-top: 40%;
-left: 0;
-right: 0;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  top: 40%;
+  left: 0;
+  right: 0;
 
   height: 65px;
   width: 65px;
@@ -33,25 +32,25 @@ right: 0;
 `;
 
 const square1Animation = keyframes`
- 50% {
+      50% {
         transform: translate(150%,150%) scale(2,2);
       }
 `;
 
 const square2Animation = keyframes`
-50% {
+      50% {
         transform: translate(-150%,150%) scale(2,2);
       }
 `;
 
 const square3Animation = keyframes`
- 50% {
+      50% {
         transform: translate(-150%,-150%) scale(2,2);
       }
 `;
 
 const square4Animation = keyframes`
-50% {
+      50% {
         transform: translate(150%,-150%) scale(2,2);
       }
 `;
