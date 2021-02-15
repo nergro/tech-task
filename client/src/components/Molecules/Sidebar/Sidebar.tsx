@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import styled from '@emotion/styled';
-import { ChildCategory } from '../../types/category';
-import { Link } from 'react-router-dom';
+import { ChildCategory } from '../../../types/category';
+import { Link } from '../../Atoms/Link';
 import { useLocation } from 'react-router-dom';
+import { theme } from '../../../services/theme';
 
 const Aside = styled.aside`
   grid-area: sidebar;
@@ -21,13 +22,7 @@ const ListItem = styled.li`
   padding: 8px 0;
 `;
 
-type LinkProps = {
-  active: boolean;
-};
-
-const StyledLink = styled(Link)<LinkProps>`
-  text-decoration: none;
-  color: ${props => props.theme.colors.sidebar[props.active ? 'linkActive' : 'link']};
+const StyledLink = styled(Link)`
   transition: all 0.3s ease;
 `;
 
@@ -37,7 +32,7 @@ interface Props {
 
 export const Sidebar: FC<Props> = ({ categories }) => {
   const { pathname } = useLocation();
-  
+
   return (
     <Aside>
       <h3>Kategorien</h3>
@@ -45,7 +40,14 @@ export const Sidebar: FC<Props> = ({ categories }) => {
         <List>
           {categories.map(({ name, urlPath }) => (
             <ListItem key={name}>
-              <StyledLink to={`/${urlPath}`} active={pathname.includes(urlPath)}>
+              <StyledLink
+                to={`/${urlPath}`}
+                color={
+                  pathname.includes(urlPath)
+                    ? theme.colors.sidebar.linkActive
+                    : theme.colors.sidebar.link
+                }
+              >
                 {name}
               </StyledLink>
             </ListItem>

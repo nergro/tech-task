@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from '@emotion/styled';
-import { P } from '../Atoms/text/P';
+import { P } from '../../Atoms/text/P';
 
 const StyledFooter = styled.footer`
   grid-area: footer;

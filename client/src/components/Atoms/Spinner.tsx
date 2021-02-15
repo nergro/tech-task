@@ -65,19 +65,19 @@ const Square = styled.div`
   animation-duration: 1250ms;
   animation-iteration-count: infinite;
 
-  &:nth-child(1) {
+  &:nth-of-type(1) {
     animation-name: ${square1Animation};
   }
 
-  &:nth-child(2) {
+  &:nth-of-type(2) {
     animation-name: ${square2Animation};
   }
 
-  &:nth-child(3) {
+  &:nth-of-type(3) {
     animation-name: ${square3Animation};
   }
 
-  &:nth-child(4) {
+  &:nth-of-type(4) {
     animation-name: ${square4Animation};
   }
 `;

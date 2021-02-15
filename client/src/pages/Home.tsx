@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { H1 } from '../components/Atoms/text/H';
-import { Articles } from '../components/Molecules/Articles';
+import { Articles } from '../components/Molecules/Articles/Articles';
 import { useProductsResource } from '../store/productsStore/hooks';
 import { isError, isLoading } from '../store/types';
 import { Spinner } from '../components/Atoms/Spinner';

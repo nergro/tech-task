@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import styled from '@emotion/styled';
-import { Article as ArticleType } from '../../types/article';
-import { Article } from './Article';
-import { P } from '../Atoms/text/P';
+import { Article as ArticleType } from '../../../types/article';
+import { Article } from '../Article/Article';
+import { P } from '../../Atoms/text/P';
 
 const Container = styled.div`
   display: grid;

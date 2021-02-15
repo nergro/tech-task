@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import styled from '@emotion/styled';
-import { Header } from '../Molecules/Header';
-import { Sidebar } from '../Molecules/Sidebar';
-import { Footer } from '../Molecules/Footer';
+import { Header } from '../Molecules/Header/Header';
+import { Sidebar } from '../Molecules/Sidebar/Sidebar';
+import { Footer } from '../Molecules/Footer/Footer';
 import { ChildCategory } from '../../types/category';
 
 const Page = styled.div`
