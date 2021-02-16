@@ -2,28 +2,37 @@ import React from 'react';
 import { renderComponent } from '../../../services/testUtils';
 import { ChildCategory } from '../../../types/category';
 import { Sidebar } from './Sidebar';
+import { screen } from '@testing-library/react';
 
 const mockedCategories: ChildCategory[] = [
-  { name: 'Wohnzimmer', urlPath: 'kategorie/wohnzimmermoebel/' },
-  { name: 'Schlafzimmer', urlPath: 'kategorie/schlafzimmermoebel/' },
-  { name: 'Esszimmer', urlPath: 'kategorie/esszimmermoebel/' },
+  {
+    name: 'Wohnzimmer',
+    urlPath: 'kategorie/wohnzimmermoebel/',
+    articleCount: 1000,
+    categoryArticles: { articles: [] },
+  },
+  {
+    name: 'Schlafzimmer',
+    urlPath: 'kategorie/schlafzimmermoebel/',
+    articleCount: 2000,
+    categoryArticles: { articles: [] },
+  },
+  {
+    name: 'Esszimmer',
+    urlPath: 'kategorie/esszimmermoebel/',
+    articleCount: 3000,
+    categoryArticles: { articles: [] },
+  },
 ];
 
-test('renders the Sidebar', () => {
-  renderComponent(<Sidebar />);
-});
-
-test('has correct title', () => {
-  const { getByText } = renderComponent(<Sidebar />);
-  expect(getByText(/Kategorien/)).toBeInTheDocument();
+beforeEach(() => {
+  renderComponent(<Sidebar categories={mockedCategories} />);
 });
 
 test('renders all categories in a list of links', () => {
-  const { getByRole, getAllByRole } = renderComponent(<Sidebar categories={mockedCategories} />);
-
-  const listElement = getByRole('list');
-  const listElements = getAllByRole('listitem');
-  const links = getAllByRole('link');
+  const listElement = screen.getByRole('list');
+  const listElements = screen.getAllByRole('listitem');
+  const links = screen.getAllByRole('link');
 
   expect(listElement).toBeInTheDocument();
   expect(listElements.length).toEqual(3);
@@ -31,10 +40,8 @@ test('renders all categories in a list of links', () => {
 });
 
 test('links has correct href attribute', () => {
-  const { getByRole } = renderComponent(<Sidebar categories={mockedCategories} />);
-
   const categoryToTest = mockedCategories[1];
 
-  const link = getByRole('link', { name: categoryToTest.name });
+  const link = screen.getByRole('link', { name: categoryToTest.name });
   expect(link).toHaveAttribute('href', '/' + categoryToTest.urlPath);
 });

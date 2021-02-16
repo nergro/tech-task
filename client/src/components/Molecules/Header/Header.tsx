@@ -6,7 +6,7 @@ import { useDispatch, useState } from '../../../store/searchStore/hooks';
 
 const StyledHeader = styled.header`
   grid-area: header;
-  background-color: ${props => props.theme.colors.header.background};
+  background-color: ${({ theme }) => theme.colors.header.background};
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -4,7 +4,7 @@ import { P } from '../../Atoms/text/P';
 
 const StyledFooter = styled.footer`
   grid-area: footer;
-  background-color: ${props => props.theme.colors.header.background};
+  background-color: ${({ theme }) => theme.colors.header.background};
   text-align: center;
 `;
 

@@ -1,18 +1,16 @@
 import React from 'react';
 import { renderComponent } from '../../../services/testUtils';
 import { Header } from './Header';
-import { fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 
-test('renders the Header', () => {
+beforeEach(() => {
   renderComponent(<Header />);
 });
 
 test('displays search value in search input', () => {
-  const { getByPlaceholderText } = renderComponent(<Header />);
-
   const searchValue = 'Box';
 
-  const searchInput = getByPlaceholderText('Search');
+  const searchInput = screen.getByPlaceholderText('Search');
 
   fireEvent.change(searchInput, { target: { value: searchValue } });
 
@@ -20,8 +18,6 @@ test('displays search value in search input', () => {
 });
 
 test('logo navigates to homepage', () => {
-  const { getByRole } = renderComponent(<Header />);
-
-  const logoLink = getByRole('link', { name: 'home24' });
+  const logoLink = screen.getByRole('link', { name: 'home24' });
   expect(logoLink).toHaveAttribute('href', '/');
 });

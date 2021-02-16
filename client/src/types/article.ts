@@ -1,17 +1,17 @@
-export type Prices = {
+export interface Prices {
   currency: string;
   regular: {
     value: number;
   };
-};
+}
 
-export type Image = {
+export interface Image {
   path: string;
-};
+}
 
-export type Article = {
+export interface Article {
   name: string;
   variantName: string;
   prices: Prices;
   images: Image[];
-};
+}

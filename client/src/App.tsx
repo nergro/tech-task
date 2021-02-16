@@ -22,8 +22,8 @@ export const App: FC = () => {
           <ThemeProvider theme={theme}>
             <Global styles={globalStyle} />
             <Switch>
-              <Route exact path="/" component={Home} />
-              <Route path="/kategorie/:id" exact component={Home} />
+              <Route path="/" component={Home} />
+              {/* <Route path="/kategorie/:id" exact component={Home} /> */}
               <Route component={NotFound} />
             </Switch>
           </ThemeProvider>

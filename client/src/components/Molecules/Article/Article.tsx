@@ -3,10 +3,10 @@ import { Article as ArticleType } from '../../../types/article';
 import styled from '@emotion/styled';
 import { P } from '../../Atoms/text/P';
 import { Button } from '../../Atoms/Button';
-import { formatter } from '../../../services/formatter';
+import { getPriceFormat } from '../../../services/getPriceFormat';
 
 const Container = styled.div`
-  border: 1px solid ${props => props.theme.colors.article.border};
+  border: 1px solid ${({ theme }) => theme.colors.article.border};
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@ export const Article: FC<Props> = ({ article }) => {
       <ArticleInfo>
         <img src={article.images[0]?.path} alt={article.name} />
         <P textAlign="center">{article.name}</P>
-        <P textAlign="center">{formatter.format(article.prices.regular.value / 100)}</P>
+        <P textAlign="center">{getPriceFormat(article.prices.regular.value)}</P>
       </ArticleInfo>
       <Button>Add to cart</Button>
     </Container>

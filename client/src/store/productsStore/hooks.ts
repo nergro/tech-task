@@ -3,7 +3,7 @@ import { ProductsDispatchContext, ProductsStateContext, State, Action } from './
 import { Dispatch } from '../types';
 import { useQuery } from '@apollo/client';
 import { GET_PRODUCTS } from '../../services/queries';
-import { isError, isLoading } from '../../types/common';
+import { isError, isLoading } from '../../services/storeStateStatus';
 
 export const useState = (): State => {
   const state = useContext(ProductsStateContext);
@@ -21,6 +21,12 @@ export const useDispatch = (): Dispatch<Action> => {
   return dispatch;
 };
 
+enum ActionType {
+  loading = 'Products/LoadInitiated',
+  loaded = 'Products/Loaded',
+  failed = 'Products/LoadFailed',
+}
+
 export const useProductsResource = (): State => {
   const state = useState();
   const dispatch = useDispatch();
@@ -31,15 +37,15 @@ export const useProductsResource = (): State => {
 
   useEffect(() => {
     if (loading) {
-      return dispatch({ type: 'Products/LoadInitiated' });
+      return dispatch({ type: ActionType.loading });
     }
 
     if (error) {
-      return dispatch({ type: 'Products/LoadFailed', payload: error });
+      return dispatch({ type: ActionType.failed, payload: error });
     }
 
     if (data) {
-      return dispatch({ type: 'Products/Loaded', payload: data.categories });
+      return dispatch({ type: ActionType.loaded, payload: data.categories });
     }
   }, [data, dispatch, error, loading]);
 

@@ -1,17 +1,19 @@
 import { Article } from './article';
 
-export type CategoryArticle = {
+export interface CategoryArticle {
   articles: Article[];
-};
+}
 
-export type ChildCategory = {
+export interface ChildCategory {
   name: string;
   urlPath: string;
-};
+  categoryArticles: CategoryArticle;
+  articleCount: number;
+}
 
-export type Category = {
+export interface Category {
   name: string;
   categoryArticles: CategoryArticle;
   articleCount: number;
   childrenCategories: ChildCategory[];
-};
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import { Articles } from './Articles';
 import { Article as ArticleType } from '../../../types/article';
 import { renderComponent } from '../../../services/testUtils';
+import { screen } from '@testing-library/react';
 
 export const mockedArticles: ArticleType[] = [
   {
@@ -19,13 +20,13 @@ export const mockedArticles: ArticleType[] = [
 ];
 
 test('renders all Articles', () => {
-  const { getAllByRole } = renderComponent(<Articles articles={mockedArticles} />);
+  renderComponent(<Articles articles={mockedArticles} />);
 
-  expect(getAllByRole('button', { name: 'Add to cart' }).length).toBe(2);
+  expect(screen.getAllByRole('button', { name: 'Add to cart' }).length).toBe(2);
 });
 
 test('shows message on empty list', () => {
-  const { getByText } = renderComponent(<Articles articles={[]} />);
+  renderComponent(<Articles articles={[]} />);
 
-  expect(getByText('Liste leer')).toBeInTheDocument();
+  expect(screen.getByText('Liste leer')).toBeInTheDocument();
 });

@@ -60,7 +60,7 @@ const Square = styled.div`
   width: calc(65px * 0.25 / 1.3);
   margin-right: auto;
   margin-left: auto;
-  border: calc(65px * 0.04 / 1.3) solid ${props => props.theme.colors.button.background};
+  border: calc(65px * 0.04 / 1.3) solid ${({ theme }) => theme.colors.button.background};
   position: absolute;
   animation-duration: 1250ms;
   animation-iteration-count: infinite;

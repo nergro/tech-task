@@ -6,7 +6,7 @@ type Props = TypographyProps & ColorProps;
 
 export const Link = styled(RouterLink)<Props>`
   text-decoration: none;
-  color: ${props => props.theme.colors.text.primary};
+  color: ${({ theme }) => theme.colors.text.primary};
   ${typography};
   ${color};
 `;

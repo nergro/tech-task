@@ -7,7 +7,7 @@ import { theme } from '../../../services/theme';
 
 const Aside = styled.aside`
   grid-area: sidebar;
-  background-color: ${props => props.theme.colors.sidebar.background};
+  background-color: ${({ theme }) => theme.colors.sidebar.background};
   padding: 10px;
 `;
 

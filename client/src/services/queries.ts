@@ -8,20 +8,26 @@ export const GET_PRODUCTS = gql`
       childrenCategories {
         name
         urlPath
+        articleCount
+        ...categoryArticles
       }
-      categoryArticles(first: 50) {
-        articles {
-          name
-          variantName
-          prices {
-            currency
-            regular {
-              value
-            }
+      ...categoryArticles
+    }
+  }
+
+  fragment categoryArticles on Category {
+    categoryArticles(first: 50) {
+      articles {
+        name
+        variantName
+        prices {
+          currency
+          regular {
+            value
           }
-          images(format: WEBP, maxWidth: 200, maxHeight: 200, limit: 1) {
-            path
-          }
+        }
+        images(format: WEBP, maxWidth: 200, maxHeight: 200, limit: 1) {
+          path
         }
       }
     }
